@@ -7,5 +7,5 @@ void	ft_is_negative(int n)
 	else
 	{
 		write(1, "P\n", 2);
-	} 
+	}
 }

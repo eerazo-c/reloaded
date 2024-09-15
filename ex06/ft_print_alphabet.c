@@ -14,7 +14,7 @@
 void	ft_print_alphabet(void)
 {
 	char	c;
-	int	i;
+	int		i;
 
 	c = 'a';
 	i = 0;
@@ -24,10 +24,4 @@ void	ft_print_alphabet(void)
 		c++;
 		i++;
 	}
-}
-
-int main ()
-{
-	ft_print_alphabet();
-	return (0);
 }
