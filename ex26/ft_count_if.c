@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elerazo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 15:41:44 by elerazo-          #+#    #+#             */
-/*   Updated: 2024/09/18 15:41:50 by elerazo-         ###   ########.fr       */
+/*   Created: 2024/09/18 15:51:25 by elerazo-          #+#    #+#             */
+/*   Updated: 2024/09/18 15:51:42 by elerazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
+int ft_count_if(char **tab, int (*f)(char*))
 {
-	if (nb < 0)
-		return (0);
-	if (nb == 0)
-		return (1);
-	return (nb * ft_iterative_factorial(nb - 1));
+
 }

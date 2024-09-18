@@ -1,41 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elerazo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 15:43:52 by elerazo-          #+#    #+#             */
-/*   Updated: 2024/09/18 15:43:57 by elerazo-         ###   ########.fr       */
+/*   Created: 2024/09/18 15:45:54 by elerazo-          #+#    #+#             */
+/*   Updated: 2024/09/18 17:03:01 by elerazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
 
-void	ft_putchar(char c)
+char	*ft_strdup(char *src)
 {
-	write (1, &c, 1);
-}
+	char	*memory;
+	int		i;
+	int		size;
 
-int	main(int argc, char **argv)
-{
-	int	i;
-	int	j;
-
-	if (argc >= 2)
+	size = 0;
+	while (src[size])
+		size++;
+	memory = malloc(sizeof(char) * (size + 1));
+	if (memory == NULL)
+		return (NULL);
+	i = 0;
+	while (src[i])
 	{
-		i = 1;
-		while (i < argc)
-		{
-			j = 0;
-			while (argv[i][j])
-			{
-				ft_putchar(argv[i][j]);
-				j++;
-			}
-			ft_putchar('\n');
-			i++;
-		}
+		memory[i] = src[i];
+		i++;
 	}
-	return (0);
+	return (memory);
 }
+/*
+int main ()
+{
+	char s1[] = "Hola que tal, me lleamo Eli";
+	char *result = ft_strdup(s1);
+
+	printf("copia:%s\n", result);
+	free (result);
+	return (0);
+}*/
