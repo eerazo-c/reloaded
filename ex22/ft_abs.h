@@ -10,4 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define ABS(Value)
+#ifndef FT_ABS_H
+# define FT_ABS_H
+
+# define ABS(Value) (Value * ((Value < 0) * (-1) + (Value > 0)))
+
+#endif
+
+//macros son como unas variable globales constantes no se puede modificar su valor.
+//Que es el valor absoluto: plano cartesiano referencia su valor siempre es positivo 
+//palabras reservadas.

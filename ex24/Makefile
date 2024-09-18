@@ -10,4 +10,17 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME: libft.a
+NAME = libft.a
+SOURCES = 
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar -rcs
+
+clean:
+	rm -f $(OBJECTS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
