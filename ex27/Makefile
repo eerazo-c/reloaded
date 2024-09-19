@@ -5,37 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: elerazo- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/18 15:48:52 by elerazo-          #+#    #+#              #
-#    Updated: 2024/09/19 16:50:52 by elerazo-         ###   ########.fr        #
+#    Created: 2024/09/19 16:29:43 by elerazo-          #+#    #+#              #
+#    Updated: 2024/09/19 16:32:03 by elerazo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = libft.a
-SRC_DIR = srcs
-INCLUDE_DIR = includes
-SRC = 	$(SRC_DIR) /ft_putchar.c \
-	$(SRC_DIR) /ft_putstr.c \
-	$(SRC_DIR) /ft_strcmp.c \
-	$(SRC_DIR) /ft_strlen.c \
-	$(SRC_DIR) /ft_swap.c \
+NAME = ft_display_file
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+SRC = ft_display_file.c
+OBJ = $(SRC:.c=.o)
 
-OBJECTS = $(SRC:.c=.o)
-CC = Gcc
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_DIR)
+all: $(NAME)
 
-all: $(NAME) 
-
-$(NAME): $(OBJECTS)
-	ar rcs $(NAME) $(OBJECTS)
-
-%.o: %.c 
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

@@ -1,26 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display_file.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elerazo- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/19 16:06:02 by elerazo-          #+#    #+#             */
+/*   Updated: 2024/09/19 16:28:55 by elerazo-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include <unistd.h>
 #include <fcntl.h>
 
-void	display(char *filename)
-{
-	int		file;
-	char	character;
+#define BUF_SIZE 4096
 
-	file = open(filename, O_RDONLY);
-	if (file < 0)
-		return ;
-	while (read(file, &character, 1))
-		write(1, &character, 1);
-	close(file);
+void	error_display(char *messa)
+{
+	while (*messa)
+	{
+		write(2, messa, 1);
+		messa++;
+	}
 }
 
-int	main(int argc, char *argv[])
+void	file_display(int fd)
 {
-	if (argc == 1)
-		write(2, "File name missing.\n", 19);
-	else if (argc > 2)
-		write(2, "Too many arguments.\n", 20);
-	else
-		display(argv[1]);
+	char	buffer[BUF_SIZE];
+	int		bytes_read;
+
+	bytes_read = read(fd, buffer, BUF_SIZE);
+	while (bytes_read > 0)
+	{
+		write(1, buffer, bytes_read);
+		bytes_read = read(fd, buffer, BUF_SIZE);
+	}
+}
+
+int	main(int argc, char **argv)
+
+{
+	int	fd;
+
+	if (argc < 2)
+	{
+		error_display("File name missing.\n");
+		return (1);
+	}
+	if (argc > 2)
+	{
+		error_display("Too many arguments.\n");
+		return (1);
+	}
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		error_display("Cannot read file.\n");
+		return (1);
+	}
+	file_display(fd);
+	close(fd);
 	return (0);
 }

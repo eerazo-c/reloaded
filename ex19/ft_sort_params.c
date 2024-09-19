@@ -6,14 +6,26 @@
 /*   By: elerazo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 15:44:43 by elerazo-          #+#    #+#             */
-/*   Updated: 2024/09/18 16:06:55 by elerazo-         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:23:19 by elerazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_putchar(char c);
+
+int	ft_strcmp(char *s1, char *s2)
+
 {
-	write (1, &c, 1);
+	int	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (s1[i] - s2[i]);
 }
 
 void	ft_putstr(char *str)
@@ -22,46 +34,48 @@ void	ft_putstr(char *str)
 
 	i = 0;
 	while (str[i] != '\0')
-		ft_putchar(str[i++]);
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+	ft_putchar('\n');
 }
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_sort_params(char **argv, int argc)
 {
-	int	i;
+	int		i;
+	int		j;
+	char	*temp;
 
-	i = 0;
-	while ((s1[i] == s2[i]) && (s1[i] != '\0' && s2[i] != '\0'))
+	i = 1;
+	while (i < argc - 1)
+	{
+		j = 1;
+		while (j < argc - 1)
+		{
+			if (ft_strcmp(argv[j], argv[j + 1]) > 0)
+			{
+				temp = argv[j];
+				argv[j] = argv[j + 1];
+				argv[j + 1] = temp;
+			}
+			j++;
+		}
 		i++;
-	return (s1[i] - s2[i]);
+	}
 }
 
 int	main(int argc, char **argv)
-{
-	char	*tmp;
-	int		find;
-	int		i;
 
-	find = 1;
-	while (find)
-	{
-		find = 0;
-		i = 0;
-		while (++i < argc - 1)
-		{
-			if (ft_strcmp(argv[i], argv[i + 1]) > 0)
-			{
-				tmp = argv[i];
-				argv[i] = argv[i + 1];
-				argv[i + 1] = tmp;
-				find = 1;
-			}
-		}
-	}
-	i = 0;
-	while (++i < argc)
+{
+	int	i;
+
+	ft_sort_params(argv, argc);
+	i = 1;
+	while (i < argc)
 	{
 		ft_putstr(argv[i]);
-		ft_putchar('\n');
+		i++;
 	}
 	return (0);
 }
