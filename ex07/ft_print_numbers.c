@@ -6,21 +6,20 @@
 /*   By: elerazo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 15:39:05 by elerazo-          #+#    #+#             */
-/*   Updated: 2024/09/18 15:39:11 by elerazo-         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:12:26 by elerazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+void	ft_putchar(char c);
 
 void	ft_print_numbers(void)
 {
 	char	num;
-	int		i;
 
 	num = '0';
-	i = 0;
-	while (i <= 9)
+	while (num <= '9')
 	{
-		write(1, &num, 1);
+		ft_putchar(num);
 		num++;
-		i++;
 	}
 }

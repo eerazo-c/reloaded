@@ -6,22 +6,21 @@
 /*   By: elerazo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 18:47:00 by elerazo-          #+#    #+#             */
-/*   Updated: 2024/09/11 18:48:40 by elerazo-         ###   ########.fr       */
+/*   Updated: 2024/09/19 17:19:44 by elerazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 
+void	ft_putchar(char c);
+
 void	ft_print_alphabet(void)
 {
-	char	c;
-	int		i;
+	char	i;
 
-	c = 'a';
-	i = 0;
-	while (i < 26)
+	i = 'a';
+	while (i <= 'z')
 	{
-		write(1, &c, 1);
-		c++;
+		ft_putchar(i);
 		i++;
 	}
 }

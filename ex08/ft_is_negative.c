@@ -6,18 +6,20 @@
 /*   By: elerazo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 15:39:40 by elerazo-          #+#    #+#             */
-/*   Updated: 2024/09/18 15:39:46 by elerazo-         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:32:17 by elerazo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+void	ft_putchar(char c);
 
 void	ft_is_negative(int n)
 {
 	if (n < 0)
 	{
-		write(1, "N\n", 2);
+		ft_putchar('N');
 	}
 	else
 	{
-		write(1, "P\n", 2);
+		ft_putchar('P');
 	}
 }
